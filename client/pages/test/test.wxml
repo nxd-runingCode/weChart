@@ -4,3 +4,4 @@
     <view bindtap='getDate'>这里是插入到组件slot中的内容</view>
   </component-tag-name>
 </view>
+<view>新提交</view>
