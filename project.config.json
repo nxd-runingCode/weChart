@@ -1,0 +1,11 @@
+{
+	"client": "./client",
+	"svr": "./server",
+	"appid": "wx5aa01f4fa28d1886",
+	"projectname": "FreshCusMany",
+	"setting": {
+		"newFeature": true
+	},
+	"libVersion": "1.6.6",
+	"condition": {}
+}

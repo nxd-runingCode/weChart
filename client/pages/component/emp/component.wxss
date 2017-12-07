@@ -1,0 +1,7 @@
+/* 这里的样式只应用于这个自定义组件 */
+.wrapper {
+  color: red;
+}
+.blue {
+  color: blue;
+}

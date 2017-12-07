@@ -1,0 +1,16 @@
+// var comm = require("./comm.wxs");
+
+// console.log(comm.foo);
+// console.log(comm.bar("logic.wxs"));
+// console.log(comm.msg);
+
+
+// var o = {} //生成一个新的空对象
+
+// //生成一个新的非空对象
+// o = {
+//   'string': 1,  //object 的 key 可以是字符串
+//   const_var: 2,  //object 的 key 也可以是符合变量定义规则的标识符
+//   func: {}, //object 的 value 可以是任何类型
+// };
+// console.log("function (){return '[object Object]'}" === o.toString)

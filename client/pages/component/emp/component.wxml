@@ -1,0 +1,10 @@
+<!-- 这是自定义组件的内部WXML结构 -->
+<view class="wrapper">
+  <view>这里是组件的内部节点</view>
+  <view>{{innerText}}</view>
+  <view class='blue'>{{someData}}</view>
+  <view bindtap='onMyButtonTap'>点我切换下一行内容</view>
+  <view>{{A[0].B}}</view>
+  <slot></slot>
+  <button bindtap="onTap">点击这个按钮将触发“myevent”事件</button>
+</view>
