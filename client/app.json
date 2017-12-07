@@ -3,7 +3,8 @@
     "pages/index/index",
     "pages/chat/chat",
     "pages/item/item",
-    "pages/test/test"
+    "pages/test/test",
+    "pages/yxc_test/yxc"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -24,6 +25,10 @@
       {
         "pagePath": "pages/test/test",
         "text": "测试"
+      },
+      {
+        "pagePath": "pages/yxc_test/yxc",
+        "text": "姚晓朝"
       }
     ],
     "color": "#fffff2",
