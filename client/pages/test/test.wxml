@@ -1,7 +1,11 @@
+<wxs src="test.wxs" module="m1" />
 <view>
-  <component-tag-name bindmyevent="onMyEvent">
+  <component-tag-name bindmyaaaevent="onMyaEvent">
     <!-- 这部分内容将被放置在组件 <slot> 的位置上 -->
-    <view bindtap='getDate'>这里是插入到组件slot中的内容</view>
+    <view calss="blue" slot="before">组件前节点</view>
+    <view slot="after" bindtap='getDate'>这里是插入到组件slot中的内容</view>
   </component-tag-name>
 </view>
-<view>新提交</view>
+<text class="blue">新提交</text>
+
+<view>{{m1.message}}在{{m1.date}}</view>

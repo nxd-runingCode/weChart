@@ -11,7 +11,7 @@ Page({
     
     console.log(new Date());
   },
-  onMyEvent: function (e) {
+  onMyaEvent: function (e) {
     console.log(e.detail.a)
     e.detail // 自定义组件触发事件时提供的detail对象
   },
