@@ -2,7 +2,7 @@
 	"client": "./client",
 	"svr": "./server",
 	"appid": "wx5aa01f4fa28d1886",
-	"projectname": "yxc",
+	"projectname": "weChat",
 	"setting": {
 		"newFeature": true
 	},
