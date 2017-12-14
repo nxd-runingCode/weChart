@@ -5,6 +5,7 @@
     "pages/item/item",
     "pages/test/test",
     "pages/yxc_test/yxc"
+    "pages/hm_test/hm"
 
   ],
   "window": {
@@ -29,9 +30,15 @@
       },
       {
         "pagePath": "pages/yxc_test/yxc",
+
         "text": "姚晓朝",
         "iconPath":"images/yxc_index.jpg",
         "selectedIconPath":"images/yxc_index.jpg"
+      },
+      {
+        "pagePath": "pages/hm_test/hm",
+        "text": "侯敏"
+
       }
     ],
     "color": "#fffff2",
