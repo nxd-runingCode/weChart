@@ -45,3 +45,6 @@ sh/
 sdk.config.json
 # ignore local config
 server/config.local.js
+client/pages/hm_test/hm.js
+client/pages/hm_test/hm.js
+client/app.json
