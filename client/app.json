@@ -5,6 +5,7 @@
     "pages/item/item",
     "pages/test/test",
     "pages/yxc_test/yxc"
+
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -28,12 +29,14 @@
       },
       {
         "pagePath": "pages/yxc_test/yxc",
-        "text": "姚晓朝"
+        "text": "姚晓朝",
+        "iconPath":"images/yxc_index.jpg",
+        "selectedIconPath":"images/yxc_index.jpg"
       }
     ],
     "color": "#fffff2",
-    "backgroundColor": "#0ABC70",
+    "backgroundColor": "#00FA9A",
     "borderStyle": "black",
-    "selectedColor": "#521155"
+    "selectedColor": "#000000"
   }
 }
