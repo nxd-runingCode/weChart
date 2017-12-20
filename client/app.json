@@ -35,7 +35,9 @@
       },
       {
         "pagePath": "pages/hm_test/hm",
-        "text": "侯敏"
+        "text": "侯敏",
+        "iconPath": "images/hm_index.jpg",
+        "selectedIconPath": "images/click_img.jpg"
       }
     ],
     "color": "#fffff2",
