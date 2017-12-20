@@ -9,3 +9,5 @@
 <text class="blue">新提交</text>
 
 <view>{{m1.message}}在{{m1.date}}</view>
+
+
