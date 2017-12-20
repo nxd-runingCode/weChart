@@ -6,7 +6,7 @@
 var host = 'https://7xbuhme3.qcloud.la';
 
 var config = {
-
+ 
     // 下面的地址配合云端 Demo 工作
     service: {
         host,
@@ -24,5 +24,6 @@ var config = {
         uploadUrl: `${host}/weapp/upload`
     }
 };
+
 
 module.exports = config;
