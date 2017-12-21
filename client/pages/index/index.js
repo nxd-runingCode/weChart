@@ -57,6 +57,41 @@ Page({
      * 点击「登录」按钮，测试登录功能
      */
     doLogin() {
+
+
+      wx.request({
+        url: 'https://www.nyhlwc.com/test/find/aaa', //仅为示例，并非真实的接口地址
+        data: {
+          
+        },
+        method: 'GET',
+        header: {
+          'content-type': 'application/json' // 默认值
+        },
+        success: function (res) {
+          console.log(res.data)
+        }
+      })
+
+      wx.request({
+        url: 'https://www.nyhlwc.com/test/add', //仅为示例，并非真实的接口地址
+        data: {
+          name:'adsf',
+          age:'14',
+          sex:'1'
+        },
+        method: 'POST',
+        header: {
+          'content-type': 'application/json' // 默认值
+        },
+        success: function (res) {
+          console.log(res.data)
+        }
+      })
+
+
+
+
         showBusy('正在登录');
 
         // 登录之前需要调用 qcloud.setLoginUrl() 设置登录地址，不过我们在 app.js 的入口里面已经调用过了，后面就不用再调用了
