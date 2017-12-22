@@ -60,7 +60,7 @@ Page({
 
 
       wx.request({
-        url: 'https://www.nyhlwc.com/test/find/aaa', //仅为示例，并非真实的接口地址
+        url: 'http://localhost:8080/test/find/yxc', //仅为示例，并非真实的接口地址
         data: {
           
         },
@@ -74,7 +74,7 @@ Page({
       })
 
       wx.request({
-        url: 'https://www.nyhlwc.com/test/add', //仅为示例，并非真实的接口地址
+        url: 'http://localhost:8080/test/add', //仅为示例，并非真实的接口地址
         data: {
           name:'adsf',
           age:'14',
