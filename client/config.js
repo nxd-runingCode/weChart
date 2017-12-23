@@ -3,7 +3,7 @@
  */
 
 // 此处主机域名修改成腾讯云解决方案分配的域名
-var host = 'https://nyhlwc.com/demo/test/aaa';
+var host = 'https://7xbuhme3.qcloud.la';
 
 var config = {
  
