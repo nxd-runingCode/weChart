@@ -1,5 +1,9 @@
 <view>
   <text>姓名：侯敏</text>
+</view>
+<view>
   <text>性别：男</text>
+</view>
+<view>
   <text>年龄：25</text>
 </view>
