@@ -10,6 +10,6 @@
 		"minified": true,
 		"newFeature": true
 	},
-	"libVersion": "1.7.1",
+	"libVersion": "1.6.6",
 	"condition": {}
 }

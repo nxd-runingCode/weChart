@@ -60,7 +60,7 @@ Page({
 
 
       wx.request({
-        url: 'http://localhost:8080/test/find/yxc', //仅为示例，并非真实的接口地址
+        url: 'http://localhost:8888/test/find/adsf', //仅为示例，并非真实的接口地址
         data: {
           
         },
@@ -71,27 +71,7 @@ Page({
         success: function (res) {
           console.log(res.data)
         }
-      })
-
-      wx.request({
-        url: 'http://localhost:8080/test/add', //仅为示例，并非真实的接口地址
-        data: {
-          name:'adsf',
-          age:'14',
-          sex:'1'
-        },
-        method: 'POST',
-        header: {
-          'content-type': 'application/json' // 默认值
-        },
-        success: function (res) {
-          console.log(res.data)
-        }
-      })
-
-
-
-
+      });
         showBusy('正在登录');
 
         // 登录之前需要调用 qcloud.setLoginUrl() 设置登录地址，不过我们在 app.js 的入口里面已经调用过了，后面就不用再调用了
