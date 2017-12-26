@@ -1,6 +1,0 @@
-/* pages/test/test.wxss */
-.blue {
-  /* color: yellow; */
-  float: right;
-  font:900;
-}
