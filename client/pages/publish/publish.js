@@ -1,4 +1,4 @@
-// pages/test/test.js
+// pages/publish/publish.js
 Page({
 
   /**
@@ -6,14 +6,6 @@ Page({
    */
   data: {
   
-  },
-  getDate: function () {
-    
-    console.log(new Date());
-  },
-  onMyaEvent: function (e) {
-    console.log(e.detail.a)
-    e.detail // 自定义组件触发事件时提供的detail对象
   },
 
   /**

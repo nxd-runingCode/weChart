@@ -1,7 +1,0 @@
-
-var msg = "hello world";
-var date = getDate().getTime();
-module.exports = {
-  message : msg,
-  date : date
-};

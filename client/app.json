@@ -1,11 +1,8 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/chat/chat",
-    "pages/item/item",
-    "pages/test/test",
-    "pages/yxc_test/yxc",
-    "pages/hm_test/hm"
+    "pages/publish/publish",
+    "pages/mine/mine"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -20,24 +17,12 @@
         "text": "首页"
       },
       {
-        "pagePath": "pages/chat/chat",
-        "text": "聊天"
+        "pagePath": "pages/publish/publish",
+        "text": "发布"
       },
       {
-        "pagePath": "pages/test/test",
-        "text": "测试"
-      },
-      {
-        "pagePath": "pages/yxc_test/yxc",
-        "text": "姚晓朝",
-        "iconPath": "images/yxc_index.jpg",
-        "selectedIconPath": "images/yxc_index.jpg"
-      },
-      {
-        "pagePath": "pages/hm_test/hm",
-        "text": "侯敏",
-        "iconPath": "images/hm_index.jpg",
-        "selectedIconPath": "images/click_img.jpg"
+        "pagePath": "pages/mine/mine",
+        "text": "我的"
       }
     ],
     "color": "#fffff2",
