@@ -1,2 +1,14 @@
 <!--pages/yxc_test/yxc.wxml-->
 <text>yxc</text>
+
+ <view class="line">
+        <text>姚晓朝上传图片测试</text>
+        <view class="line-control">
+            <view bindtap="doUpload" class="item">
+                <view class="item-inner">上传图片</view>
+            </view>
+            <view class="item-image" wx:if="{{ imgUrl }}">
+                <image src="{{ imgUrl }}" class="image" mode="aspectFill" bindtap="previewImage"></image>
+            </view>
+        </view>
+    </view>

@@ -62,5 +62,40 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+  doUpload() {
+    var that = this
+
+    wx.chooseImage({
+      count: 1,
+      sizeType: ['compressed'],
+      sourceType: ['album', 'camera'],
+      success: function (res) {
+        var filePath = res.tempFilePaths[0]
+
+        wx.uploadFile({
+          url: that.data.uploadUrl,
+          filePath: filePath,
+          name: 'file',
+
+          success: function (res) {
+            showSuccess('上传图片成功')
+            res = JSON.parse(res.data)
+            console.log(res)
+            that.setData({
+              imgUrl: res.data.imgUrl
+            })
+          },
+
+          fail: function (e) {
+            console.error(e)
+          }
+        })
+
+      },
+      fail: function (e) {
+        console.error(e)
+      }
+    })
   }
 })

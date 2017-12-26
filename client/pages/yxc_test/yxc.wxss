@@ -1,1 +1,37 @@
 /* pages/yxc_test/yxc.wxss */
+.root {
+    background: #efeff4;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom:0;
+}
+.line {
+    padding-top: 30rpx;
+}
+
+.line-control {
+    border-bottom: #d9d9d9 1px solid;
+    border-top: #d9d9d9 1px solid;
+    background-color: #fff;
+    margin-top: 10rpx;
+}
+
+.line-control .item-inner {
+    border-bottom: #d9d9d9 1px solid;
+    height: 90rpx;
+    line-height: 90rpx;
+}
+.line-control .item-image {
+    text-align: center;
+}
+
+.line-control .item {
+    box-sizing: border-box;
+    text-align: left;
+    color: #007AFF;
+    font-size: 32rpx;
+    padding-left: 40rpx;
+    position: relative;
+}
