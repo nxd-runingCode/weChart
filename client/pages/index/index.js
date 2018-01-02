@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    list:'',
   },
 
   /**
@@ -26,7 +26,23 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    var that = this
+    wx.request({
+      url: 'http://localhost:8888/index/findAll', //仅为示例，并非真实的接口地址
+      data: {
+
+      },
+      method: 'POST',
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success: function (res) {
+        console.log(res.data.list);
+        that.setData({
+          list: res.data.list
+        })
+      }
+    });
   },
 
   /**
