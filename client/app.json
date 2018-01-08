@@ -7,7 +7,7 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#333",
-    "navigationBarTitleText": "腾讯云小程序解决方案",
+    "navigationBarTitleText": "宠物",
     "navigationBarTextStyle": "white"
   },
   "tabBar": {
@@ -29,5 +29,7 @@
     "backgroundColor": "#00FA9A",
     "borderStyle": "black",
     "selectedColor": "#000000"
-  }
+  },
+  "debug": true
+  
 }
