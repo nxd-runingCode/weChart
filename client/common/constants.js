@@ -1,5 +1,7 @@
 module.exports = {
   USER_ID: '',
+  NICK_NAME: '',
+  AVATAR_URL: '',
   WX_HEADER_USER_ID: 'X-WX-UserId',
 
   ERR_REQUEST_NO_NET: 'ERR_REQUEST_NO_NET',

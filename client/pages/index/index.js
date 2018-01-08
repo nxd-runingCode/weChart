@@ -32,12 +32,12 @@ Page({
     var that = this
 
     common.request('POST', {}, config.service.indexFindAllUrl, function (requestError, requestResult) {
-        console.log("=====================");
+        // console.log("=====================");
         if (requestError) {
           console.log(requestError);
           return;
         }
-        console.log("requestResult",requestResult);
+        // console.log("requestResult",requestResult);
         that.setData({
           list: requestResult.list
         })

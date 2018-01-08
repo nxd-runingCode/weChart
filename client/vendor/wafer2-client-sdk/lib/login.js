@@ -25,25 +25,63 @@ var LoginError = (function () {
 var getWxLoginResult = function getLoginCode(callback) {
     wx.login({
         success: function (loginResult) {
-          // console.log("getWxLoginResult")
-            wx.getUserInfo({
-                success: function (userResult) {
-                  // console.log("getUserInfo")
+
+          // 可以通过 wx.getSetting 先查询一下用户是否授权了 "scope.userInfo" 这个 scope
+          wx.getSetting({
+            success(res) {
+              console.log('asdfasdfasdfdsfsd',res.authSetting['scope.userInfo'])
+              if (!res.authSetting['scope.userInfo']) {
+                console.log('开始申请权限')
+                wx.authorize({
+                  scope: 'scope.userInfo',
+                  success() {
+                    // 用户已经同意小程序使用信息查询，后续调用 wx.getUserInfo 接口不会弹窗询问
+                    // console.log("getWxLoginResult")
+                    wx.getUserInfo({
+                      success: function (userResult) {
+                        // console.log("getUserInfo")
+
+                        callback(null, {
+                          code: loginResult.code,
+                          encryptedData: userResult.encryptedData,
+                          iv: userResult.iv,
+                          userInfo: userResult.userInfo,
+                        });
+                      },
+
+                      fail: function (userError) {
+                        var error = new LoginError(constants.ERR_WX_GET_USER_INFO, '获取微信用户信息失败，请检查网络状态');
+                        error.detail = userError;
+                        callback(error, null);
+                      },
+                    });
+                  }
+                })
+              } else {
+                console.log("getWxLoginResult")
+                wx.getUserInfo({
+                  success: function (userResult) {
+                    // console.log("getUserInfo")
 
                     callback(null, {
-                        code: loginResult.code,
-                        encryptedData: userResult.encryptedData,
-                        iv: userResult.iv,
-                        userInfo: userResult.userInfo,
+                      code: loginResult.code,
+                      encryptedData: userResult.encryptedData,
+                      iv: userResult.iv,
+                      userInfo: userResult.userInfo,
                     });
-                },
+                  },
 
-                fail: function (userError) {
+                  fail: function (userError) {
                     var error = new LoginError(constants.ERR_WX_GET_USER_INFO, '获取微信用户信息失败，请检查网络状态');
                     error.detail = userError;
                     callback(error, null);
-                },
-            });
+                  },
+                });
+              }
+            }
+          });
+
+          
         },
 
         fail: function (loginError) {
@@ -144,8 +182,9 @@ var login = function login(options) {
     });
 
     var session = Session.get();
+    
     if (session) {
-      doLogin();
+        doLogin();
         wx.checkSession({
             success: function () {
                 options.success(session.userinfo);

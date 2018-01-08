@@ -15,24 +15,8 @@ App({
     
     onLaunch(referrerInfo) {
       
-      // 可以通过 wx.getSetting 先查询一下用户是否授权了 "scope.record" 这个 scope
-      // wx.getSetting({
-      //   success(res) {
-      //     if (!res.authSetting['scope.address']) {
-      //       wx.authorize({
-      //         scope: 'scope.address',
-      //         success() {
-      //           // 用户已经同意小程序使用录音功能，后续调用 wx.startRecord 接口不会弹窗询问
-      //           wx.startRecord()
-      //         }
-      //       })
-      //     }
-      //   }
-      // })
-        // qcloud.setLoginUrl(config.service.loginUrl);
-        // this.doLogin();
-      common.login();
-      console.log("constants.userId" + constants.userId);
+      
+      // common.login('start');
       // common.request('GET', {}, config.service.testUrl +'monkey',function (wxLoginError, wxLoginResult) {
       //   console.log("=====================");
       //   if (wxLoginError) {
