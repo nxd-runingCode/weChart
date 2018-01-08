@@ -1,4 +1,7 @@
 // pages/index/index.js
+var common = require('../../common/common');
+
+var config = require('../../config');
 Page({
 
   /**
@@ -27,22 +30,20 @@ Page({
    */
   onShow: function () {
     var that = this
-    wx.request({
-      url: 'http://localhost:8888/index/findAll', //仅为示例，并非真实的接口地址
-      data: {
 
-      },
-      method: 'POST',
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      success: function (res) {
-        console.log(res.data.list);
+    common.request('POST', {}, config.service.indexFindAllUrl, function (requestError, requestResult) {
+        console.log("=====================");
+        if (requestError) {
+          console.log(requestError);
+          return;
+        }
+        console.log("requestResult",requestResult);
         that.setData({
-          list: res.data.list
+          list: requestResult.list
         })
-      }
-    });
+
+      });
+
   },
 
   /**

@@ -91,9 +91,7 @@ var doRequest = function (method, data, url, callback) {
         // var res = data.data
         if (data.code === undefined) {
           
-          callback(null, {
-            data: data
-          });
+          callback(null, data);
         } else {
           var errorMessage = '请求失败：' + (data.message || '未知错误');
           var  serviceError = new RequestError(constants.ERR_REQUEST_SERVICE_ERROR, errorMessage);
@@ -110,7 +108,7 @@ var doRequest = function (method, data, url, callback) {
     },
 
     // 响应错误
-    fail: function (loginResponseError) {
+    fail: function (requestError) {
       var error = new RequestError(constants.ERR_REQUEST_NO_NET, '请求失败，可能是网络错误或者服务器发生异常');
       showModel('请求失败', error.message);
       callback(error, null);

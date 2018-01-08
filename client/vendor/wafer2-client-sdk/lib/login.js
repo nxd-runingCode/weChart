@@ -25,10 +25,10 @@ var LoginError = (function () {
 var getWxLoginResult = function getLoginCode(callback) {
     wx.login({
         success: function (loginResult) {
-          console.log("getWxLoginResult")
+          // console.log("getWxLoginResult")
             wx.getUserInfo({
                 success: function (userResult) {
-                  console.log("getUserInfo")
+                  // console.log("getUserInfo")
 
                     callback(null, {
                         code: loginResult.code,
@@ -75,7 +75,7 @@ var defaultOptions = {
  */
 var login = function login(options) {
     options = utils.extend({}, defaultOptions, options);
-    console.log(options)
+    // console.log(options)
     if (!defaultOptions.loginUrl) {
         options.fail(new LoginError(constants.ERR_INVALID_PARAMS, '登录错误：缺少登录地址，请通过 setLoginUrl() 方法设置登录地址'));
         return;
@@ -88,9 +88,9 @@ var login = function login(options) {
         }
         
         var userInfo = wxLoginResult.userInfo;
-        console.log("userInfo================")
+        // console.log("userInfo================")
 
-        console.log(userInfo)
+        // console.log(userInfo)
         // 构造请求头，包含 code、encryptedData 和 iv
         var code = wxLoginResult.code;
         var encryptedData = wxLoginResult.encryptedData;
@@ -98,11 +98,11 @@ var login = function login(options) {
         var header = {};
        
         header[constants.WX_HEADER_CODE] = code;
-        console.log("code=" + code);
+        // console.log("code=" + code);
         header[constants.WX_HEADER_ENCRYPTED_DATA] = encryptedData;
-        console.log("encryptedData=" + encryptedData);
+        // console.log("encryptedData=" + encryptedData);
         header[constants.WX_HEADER_IV] = iv;
-        console.log("iv=" + iv);
+        // console.log("iv=" + iv);
         // header[constants.WX_HEADER_USER_ID] = "sdfdsfasdfasdf";
 
         // 请求服务器登录地址，获得会话信息
@@ -113,9 +113,9 @@ var login = function login(options) {
             data: options.data,
             success: function (result) {
                 var data = result.data;
-                console.log("data")
-                console.log(data)
-                console.log("data")
+                // console.log("data")
+                // console.log(data)
+                // console.log("data")
                 // 成功地响应会话信息
                 if (data) {
                     // var res = data.data

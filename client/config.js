@@ -19,6 +19,9 @@ var config = {
         // 登录地址，用于建立会话
         loginUrl: `${host}/login/doLogin`,
 
+        // 登录地址，用于建立会话
+        indexFindAllUrl: `${host}/index/findAll`,
+
         // 测试的请求地址，用于测试会话
         requestUrl: `${host}/weapp/user`,
 
