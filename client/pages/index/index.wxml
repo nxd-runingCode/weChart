@@ -1,2 +1,15 @@
 <!--pages/index/index.wxml-->
 <text>pages/index/index.wxml</text>
+<view wx:for="{{list}}">
+  <view class="flex-wrp" style="flex-direction:row;">
+    <view>{{item.uuid}}</view>
+    <view>
+      <view>{{item.userId}}</view>
+      <view>{{item.createDate}}</view>
+    </view>
+  </view>
+  <view>
+    {{item.content}}
+  </view>
+  <view style='height:20px'></view>
+</view>
