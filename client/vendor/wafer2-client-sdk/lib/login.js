@@ -29,17 +29,21 @@ var getWxLoginResult = function getLoginCode(callback) {
           // 可以通过 wx.getSetting 先查询一下用户是否授权了 "scope.userInfo" 这个 scope
           wx.getSetting({
             success(res) {
-              console.log('asdfasdfasdfdsfsd',res.authSetting['scope.userInfo'])
+              console.log(res.authSetting['scope.userInfo'])
               if (!res.authSetting['scope.userInfo']) {
                 console.log('开始申请权限')
+                // wx.openSetting({
+                //   success(res) {
+                //     console.log(res.authSetting['scope.userInfo'])
+                //     if (!res.authSetting['scope.userInfo']) {
                 wx.authorize({
                   scope: 'scope.userInfo',
                   success() {
                     // 用户已经同意小程序使用信息查询，后续调用 wx.getUserInfo 接口不会弹窗询问
-                    // console.log("getWxLoginResult")
+                    console.log("没有授权")
                     wx.getUserInfo({
                       success: function (userResult) {
-                        // console.log("getUserInfo")
+                        console.log("getUserInfo")
 
                         callback(null, {
                           code: loginResult.code,
@@ -50,6 +54,7 @@ var getWxLoginResult = function getLoginCode(callback) {
                       },
 
                       fail: function (userError) {
+                        console.log("getWxLoginResult")
                         var error = new LoginError(constants.ERR_WX_GET_USER_INFO, '获取微信用户信息失败，请检查网络状态');
                         error.detail = userError;
                         callback(error, null);
@@ -58,7 +63,7 @@ var getWxLoginResult = function getLoginCode(callback) {
                   }
                 })
               } else {
-                console.log("getWxLoginResult")
+                console.log("已有权限")
                 wx.getUserInfo({
                   success: function (userResult) {
                     // console.log("getUserInfo")

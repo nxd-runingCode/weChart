@@ -88,6 +88,14 @@ Page({
    * 登陆
    */
   doLogin: function () {
-    common.login('mine');
+    wx.openSetting({
+      success(res) {
+        console.log(res.authSetting['scope.userInfo'])
+        if (!res.authSetting['scope.userInfo']) {
+          common.login('mine');
+        }
+      }
+    })
+    
   }
 })

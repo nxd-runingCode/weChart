@@ -16,16 +16,8 @@ App({
     onLaunch(referrerInfo) {
       
       
-      // common.login('start');
-      // common.request('GET', {}, config.service.testUrl +'monkey',function (wxLoginError, wxLoginResult) {
-      //   console.log("=====================");
-      //   if (wxLoginError) {
-      //     console.log(wxLoginError);
-      //     return;
-      //   }
-      //   console.log(wxLoginResult);
-        
-      // });
+      common.login('start');
+      
     },
     
 });

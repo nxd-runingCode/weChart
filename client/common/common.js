@@ -57,8 +57,14 @@ var showToLodinModel = (title, content) => {
     success: function (res) {
       if (res.confirm) {
         console.log('用户点击确定')
-        doLogin();
-        
+        wx.openSetting({
+          success(res) {
+            console.log(res.authSetting['scope.userInfo'])
+            if (!res.authSetting['scope.userInfo']) {
+              doLogin('request');
+            }
+          }
+        })
       } else if (res.cancel) {
         console.log('用户点击取消')
       }
@@ -68,9 +74,6 @@ var showToLodinModel = (title, content) => {
 
 //登陆
 var doLogin = function (resource) {
-
-  
-
 
   // 登录之前需要调用 qcloud.setLoginUrl() 设置登录地址，不过我们在 app.js 的入口里面已经调用过了，后面就不用再调用了
   qcloud.setLoginUrl(config.service.loginUrl);
