@@ -1,7 +1,10 @@
 // pages/publish/publish.js
+var common = require('../../common/common');
 
 // 引入配置
 var config = require('../../config');
+
+var constants = require('../../common/constants');
 
 // 显示繁忙提示
 var showBusy = text => wx.showToast({
@@ -34,6 +37,7 @@ Page({
    */
   data: {
     uploadUrl: config.service.uploadUrl,
+    publishcontent: config.service.publishcontent,
     imgUrl: [],
     focus:"aaaa",
     input_content:""
@@ -57,7 +61,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    console.log('onShow')
+    console.log('isLogin')
+    common.isLogin();
   },
 
   /**
@@ -163,7 +168,7 @@ Page({
 
        }
      })
-   },
+   },  
    publish:function(e){
      console.log('publish')
      var that = this;
@@ -186,7 +191,7 @@ Page({
      var formData = e.detail.value;
      console.log('formdata=======>', formData)
      wx.request({
-       url: 'http://localhost:8080/publish/content',
+       url: publishcontent,
        method: 'POST',
        data: formData,
        header: {

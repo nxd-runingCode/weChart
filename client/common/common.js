@@ -66,7 +66,10 @@ var showToLodinModel = (title, content) => {
           }
         })
       } else if (res.cancel) {
-        console.log('用户点击取消')
+        console.log('用户点击取消');
+        wx.redirectTo({
+          url: '../item/item',
+        })
       }
     }
   });
@@ -168,7 +171,56 @@ var doRequest = function (method, data, url, callback) {
 };
 
 
+//判断是否登陆
+var isLogin = function () {
+  if (constants.USER_ID == '') {
+    showToLodinModel('请先登录', '您还没有登录');
+  }
+}
+
+
 var exports = module.exports = {
   login: doLogin,
   request: doRequest,
+  isLogin: isLogin
 };
+
+//上传图片
+var uploadImage  = function(i, len, e) {
+  var that = this;
+  wx.uploadFile({
+    url: that.data.uploadUrl,
+    //      filePath: filePath,
+    filePath: this.data.imgUrl[i],
+    name: 'file',
+    /*      formData: {
+            'user': 'test'
+          },
+    */
+    success: function (res) {
+      showSuccess('上传图片成功')
+      res = JSON.parse(res.data)
+      console.log(res)
+      console.log(res.imageUrl)
+    },
+
+    fail: function (e) {
+      console.error(e)
+    },
+    complete: function () {
+      i++;
+      if (i == len) {
+        that.setData({
+          imgUrl: ''
+        })
+        that.submitdata(e);
+      }
+      else {
+        that.uploadImage(i, len, e);
+      }
+
+    }
+  })
+};
+
+
