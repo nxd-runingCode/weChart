@@ -11,5 +11,8 @@ App({
      */
     onLaunch() {
         qcloud.setLoginUrl(config.service.loginUrl);
+    },
+    onShow(){
+        console.log('app_onShow')
     }
 });

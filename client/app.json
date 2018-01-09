@@ -2,7 +2,8 @@
   "pages": [
     "pages/index/index",
     "pages/publish/publish",
-    "pages/mine/mine"
+    "pages/mine/mine",
+    "pages/index-demo"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -23,6 +24,10 @@
       {
         "pagePath": "pages/mine/mine",
         "text": "我的"
+      },
+      {
+        "pagePath": "pages/index-demo/index",
+        "text": "测试"
       }
     ],
     "color": "#fffff2",
