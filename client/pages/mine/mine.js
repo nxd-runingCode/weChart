@@ -91,7 +91,7 @@ Page({
     wx.openSetting({
       success(res) {
         console.log(res.authSetting['scope.userInfo'])
-        if (!res.authSetting['scope.userInfo']) {
+        if (res.authSetting['scope.userInfo']) {
           common.login('mine');
         }
       }

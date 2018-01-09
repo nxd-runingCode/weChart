@@ -14,7 +14,7 @@ App({
      */
 
     onShow(){
-        console.log('app_onShow')
+        
     },
 
     

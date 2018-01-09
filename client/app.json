@@ -3,7 +3,7 @@
     "pages/index/index",
     "pages/publish/publish",
     "pages/mine/mine",
-    "pages/index-demo"
+    "pages/index-demo/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
