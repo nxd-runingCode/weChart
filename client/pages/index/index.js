@@ -1,11 +1,14 @@
 // pages/index/index.js
+var common = require('../../common/common');
+
+var config = require('../../config');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+    list:'',
   },
 
   /**
@@ -26,7 +29,21 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    var that = this
+
+    common.request('POST', {}, config.service.indexFindAllUrl, function (requestError, requestResult) {
+        // console.log("=====================");
+        if (requestError) {
+          console.log(requestError);
+          return;
+        }
+        // console.log("requestResult",requestResult);
+        that.setData({
+          list: requestResult.list
+        })
+
+      });
+
   },
 
   /**

@@ -1,2 +1,13 @@
-<!--pages/mine/mine.wxml-->
-<text>pages/mine/mine.wxml</text>
+<view class="root">
+    <view class="line" wx:if="{{userId == ''}}" >
+        <view class="line-control">
+            <view bindtap="doLogin" class="item"><view class="item-inner">登录</view></view>
+        </view>
+    </view>
+    <view wx:else class="line-control">
+      <image class='userinfo-avatar' src='{{avatarUrl}}' mode='aspectFit'></image>
+      <text class='userinfo-nickName'>{{nickName}}</text>
+    </view> 
+    <text wx:if="{{userId == ''}}">{{userId}}</text>
+     
+</view>

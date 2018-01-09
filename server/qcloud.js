@@ -1,5 +1,5 @@
 const fs = require('fs')
-const qcloud = require('wafer2-node-sdk-master')
+const qcloud = require('wafer-node-sdk')
 
 // 获取基础配置
 const configs = require('./config')

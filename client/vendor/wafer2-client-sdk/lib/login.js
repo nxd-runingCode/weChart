@@ -25,22 +25,68 @@ var LoginError = (function () {
 var getWxLoginResult = function getLoginCode(callback) {
     wx.login({
         success: function (loginResult) {
-            wx.getUserInfo({
-                success: function (userResult) {
-                    callback(null, {
-                        code: loginResult.code,
-                        encryptedData: userResult.encryptedData,
-                        iv: userResult.iv,
-                        userInfo: userResult.userInfo,
-                    });
-                },
 
-                fail: function (userError) {
+          // 可以通过 wx.getSetting 先查询一下用户是否授权了 "scope.userInfo" 这个 scope
+          wx.getSetting({
+            success(res) {
+              console.log(res.authSetting['scope.userInfo'])
+              if (!res.authSetting['scope.userInfo']) {
+                console.log('开始申请权限')
+                // wx.openSetting({
+                //   success(res) {
+                //     console.log(res.authSetting['scope.userInfo'])
+                //     if (!res.authSetting['scope.userInfo']) {
+                wx.authorize({
+                  scope: 'scope.userInfo',
+                  success() {
+                    // 用户已经同意小程序使用信息查询，后续调用 wx.getUserInfo 接口不会弹窗询问
+                    console.log("没有授权")
+                    wx.getUserInfo({
+                      success: function (userResult) {
+                        console.log("getUserInfo")
+
+                        callback(null, {
+                          code: loginResult.code,
+                          encryptedData: userResult.encryptedData,
+                          iv: userResult.iv,
+                          userInfo: userResult.userInfo,
+                        });
+                      },
+
+                      fail: function (userError) {
+                        console.log("getWxLoginResult")
+                        var error = new LoginError(constants.ERR_WX_GET_USER_INFO, '获取微信用户信息失败，请检查网络状态');
+                        error.detail = userError;
+                        callback(error, null);
+                      },
+                    });
+                  }
+                })
+              } else {
+                console.log("已有权限")
+                wx.getUserInfo({
+                  success: function (userResult) {
+                    // console.log("getUserInfo")
+
+                    callback(null, {
+                      code: loginResult.code,
+                      encryptedData: userResult.encryptedData,
+                      iv: userResult.iv,
+                      userInfo: userResult.userInfo,
+                    });
+                  },
+
+                  fail: function (userError) {
                     var error = new LoginError(constants.ERR_WX_GET_USER_INFO, '获取微信用户信息失败，请检查网络状态');
                     error.detail = userError;
                     callback(error, null);
-                },
-            });
+                  },
+                });
+              }
+            }
+          });
+
+          
         },
 
         fail: function (loginError) {
@@ -50,6 +96,7 @@ var getWxLoginResult = function getLoginCode(callback) {
         },
     });
 };
+
 
 var noop = function noop() {};
 var defaultOptions = {
@@ -71,7 +118,7 @@ var defaultOptions = {
  */
 var login = function login(options) {
     options = utils.extend({}, defaultOptions, options);
-
+    // console.log(options)
     if (!defaultOptions.loginUrl) {
         options.fail(new LoginError(constants.ERR_INVALID_PARAMS, '登录错误：缺少登录地址，请通过 setLoginUrl() 方法设置登录地址'));
         return;
@@ -84,16 +131,22 @@ var login = function login(options) {
         }
         
         var userInfo = wxLoginResult.userInfo;
+        // console.log("userInfo================")
 
+        // console.log(userInfo)
         // 构造请求头，包含 code、encryptedData 和 iv
         var code = wxLoginResult.code;
         var encryptedData = wxLoginResult.encryptedData;
         var iv = wxLoginResult.iv;
         var header = {};
-
+       
         header[constants.WX_HEADER_CODE] = code;
+        // console.log("code=" + code);
         header[constants.WX_HEADER_ENCRYPTED_DATA] = encryptedData;
+        // console.log("encryptedData=" + encryptedData);
         header[constants.WX_HEADER_IV] = iv;
+        // console.log("iv=" + iv);
+        // header[constants.WX_HEADER_USER_ID] = "sdfdsfasdfasdf";
 
         // 请求服务器登录地址，获得会话信息
         wx.request({
@@ -103,15 +156,17 @@ var login = function login(options) {
             data: options.data,
             success: function (result) {
                 var data = result.data;
-
+                // console.log("data")
+                // console.log(data)
+                // console.log("data")
                 // 成功地响应会话信息
-                if (data && data.code === 0 && data.data.skey) {
-                    var res = data.data
-                    if (res.userinfo) {
-                        Session.set(res.skey);
-                        options.success(userInfo);
+                if (data) {
+                    // var res = data.data
+                  if (data.code === undefined) {
+                        Session.set(data.skey);
+                        options.success(data.userInfo);
                     } else {
-                        var errorMessage = '登录失败(' + data.error + ')：' + (data.message || '未知错误');
+                        var errorMessage = '登录失败(' + data.code + ')：' + (data.message || '未知错误');
                         var noSessionError = new LoginError(constants.ERR_LOGIN_SESSION_NOT_RECEIVED, errorMessage);
                         options.fail(noSessionError);
                     }
@@ -132,7 +187,9 @@ var login = function login(options) {
     });
 
     var session = Session.get();
+    
     if (session) {
+        doLogin();
         wx.checkSession({
             success: function () {
                 options.success(session.userinfo);

@@ -1,10 +1,22 @@
 // pages/mine/mine.js
+var common = require('../../common/common');
+
+var constants = require('../../common/constants');
+
+var config = require('../../config');
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    //用户编号
+    userId: '',
+    //昵称
+    nickName: '',
+    //头像
+    avatarUrl: ''
   
   },
 
@@ -26,7 +38,15 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    var that = this;
+    this.setData({
+      userId: constants.USER_ID,
+      nickName: constants.NICK_NAME,
+      avatarUrl: constants.AVATAR_URL
+    })
+
+    
+    
   },
 
   /**
@@ -62,5 +82,20 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+
+  /**
+   * 登陆
+   */
+  doLogin: function () {
+    wx.openSetting({
+      success(res) {
+        console.log(res.authSetting['scope.userInfo'])
+        if (!res.authSetting['scope.userInfo']) {
+          common.login('mine');
+        }
+      }
+    })
+    
   }
 })
