@@ -15,35 +15,45 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    this.loadList();
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+    
+  },
+
+  //下拉刷新
+  onPullDownRefresh: function (e) {
+    this.loadList(); // 注意要加 this。
+  },
+
+  loadList: function () {
+    var that = this;
+
+    common.request('POST', {}, config.service.indexFindAllUrl, function (requestError, requestResult) {
+      // console.log("=====================");
+      if (requestError) {
+        console.log(requestError);
+        return;
+      }
+      // console.log("requestResult",requestResult);
+      that.setData({
+        list: requestResult.list
+      });
+      wx.stopPullDownRefresh();
+     
+    });
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    var that = this
-
-    common.request('POST', {}, config.service.indexFindAllUrl, function (requestError, requestResult) {
-        // console.log("=====================");
-        if (requestError) {
-          console.log(requestError);
-          return;
-        }
-        // console.log("requestResult",requestResult);
-        that.setData({
-          list: requestResult.list
-        })
-
-      });
-
+    this.loadList();
   },
 
   /**
@@ -57,13 +67,6 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-  
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
   
   },
 
