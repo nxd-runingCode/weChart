@@ -133,22 +133,27 @@ Page({
        }
      })
    },
-   uploadImage:function(i,len,e){
-     var that = this;
-     wx.uploadFile({
+   uploadImage: function (i, len, e, imageUrls){
+    var that = this;
+    var header = {};
+    console.log('constants.USER_ID===========>',constants.USER_ID)
+    header[constants.WX_HEADER_USER_ID] = constants.USER_ID;
+    console.log('header=====>',header);
+    wx.uploadFile({
        url: that.data.uploadUrl,
+       header: header,
        //      filePath: filePath,
        filePath: this.data.imgUrl[i],
        name: 'file',
- /*      formData: {
+      /* formData: {
          'user': 'test'
-       },
- */  
+       },*/
+  
        success: function (res) {
          showSuccess('上传图片成功')
          res = JSON.parse(res.data)
-         console.log(res)
-         console.log(res.imageUrl)
+         console.log('res.imageUrl=========>',res.imageUrl)
+         imageUrls = imageUrls+','+res.imageUrl;
        },
 
        fail: function (e) {
@@ -160,53 +165,58 @@ Page({
            that.setData({
              imgUrl: ''
            })
-           that.submitdata(e);         
+           console.log('imageUrls============>',imageUrls)
+           that.submitdata(e, imageUrls);         
          }
          else {  
-           that.uploadImage( i, len,e);
+           that.uploadImage(i, len, e, imageUrls);
          }
 
        }
      })
+
+
+
    },  
    publish:function(e){
      console.log('publish')
      var that = this;
      var filePath =  this.data.imgUrl
+     var imageUrls = '';
      var i = 0;
      var len = filePath.length;
      console.log('this.data.imgUrl', filePath)
      console.log('that.data.imgUrl.lenth',len)
     if(len != 0){
-     this.uploadImage(i,len,e);
+      this.uploadImage(i, len, e, imageUrls);
     }else{
       that.submitdata(e);
      
     }
        },
    //表单提交
-   submitdata:function(e){
+   submitdata: function (e, imageUrls){
      var that = this;
      console.log('表单提交')
      var formData = e.detail.value;
+     formData.imageUrl = imageUrls;
      console.log('formdata=======>', formData)
-     wx.request({
-       url: publishcontent,
-       method: 'POST',
-       data: formData,
-       header: {
-         'Content-Type': 'application/json'
-       },
-       success: function (res) {
-         console.log('执行到这里');
-         that.formReset();
-         //   console.log(res.data)
-         //   that.modalTap();
-       }
-     })
-   }
-    ,
+     common.request('POST', formData, that.data.publishcontent, 
+        function(requestError, requestResult) {
+       
+       // console.log("requestResult",requestResult);
+      
 
+       console.log('执行到这里');
+       that.formReset();
+       if (requestError) {
+         console.log(requestError);
+         return;
+       }
+       //   console.log(res.data)
+       //   that.modalTap();
+     });
+   },
    formSubmit: function (e) {
      var that = this;
      that.publish(e);
