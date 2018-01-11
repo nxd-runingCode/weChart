@@ -1,4 +1,6 @@
 // pages/publish/publish.js
+var common = require('../../common/common');
+var constants = require('../../common/constants');
 
 // 引入配置
 var config = require('../../config');
@@ -34,6 +36,7 @@ Page({
    */
   data: {
     uploadUrl: config.service.uploadUrl,
+    publishcontent: config.service.publishcontent,
     imgUrl: [],
     focus:"aaaa",
     input_content:""
@@ -57,6 +60,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    console.log('isLogin')
+    common.isLogin();
     console.log('onShow')
   },
 
