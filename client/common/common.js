@@ -60,7 +60,7 @@ var showToLodinModel = (title, content) => {
         wx.openSetting({
           success(res) {
             console.log(res.authSetting['scope.userInfo'])
-            if (!res.authSetting['scope.userInfo']) {
+            if (res.authSetting['scope.userInfo']) {
               doLogin('request');
             }
           }
