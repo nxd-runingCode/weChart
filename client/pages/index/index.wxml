@@ -1,15 +1,21 @@
 <!--pages/index/index.wxml-->
-<text>pages/index/index.wxml</text>
-<view wx:for="{{list}}">
-  <view class="flex-wrp" style="flex-direction:row;">
-    <view>{{item.uuid}}</view>
-    <view>
-      <view>{{item.userId}}</view>
-      <view>{{item.createDate}}</view>
-    </view>
-  </view>
-  <view>
-    {{item.content}}
-  </view>
-  <view style='height:20px'></view>
-</view>
+<view class="search"> 
+  <view class="search-result"> 
+    <scroll-view scroll-y="true" style="height:{{scrollHeight}}px;" bindscrolltolower="searchScrollLower" bindscrolltoupper="upper"> 
+      <view class="result-item" wx:for="{{list}}"  wx:key="unique" data-data="{{item}}">
+        <view style="flex-direction:row;">
+          <view>{{item.uuid}}</view>
+          <view>
+            <view>{{item.userId}}</view>
+            <view>{{item.createDate}}</view>
+          </view>
+        </view>
+        <view>{{item.content}}</view>
+        <view style=" word-break: break-all">{{item.imageUrl}}</view>
+        <view style='height:20px'></view>
+      </view>
+      <view class="loading" hidden="{{!searchLoading}}">正在载入更多...</view> 
+      <view class="loading complete" hidden="{{!searchLoadingComplete}}">已加载全部</view> 
+    </scroll-view> 
+  </view> 
+</view> 
