@@ -4,9 +4,9 @@
 
 // 此处主机域名修改成腾讯云解决方案分配的域名
 
-// var host = 'http://172.16.41.215:8080';
 var host = 'http://192.168.0.100:8080';
-// var host = 'http://localhost:8080';
+var image_host = 'http://192.168.0.100:8888';
+
 // var host = 'https://www.nyhwc.com';
 
 var appSecret = '70385232d9fc4c5e1b3c3c4df582cf96';
@@ -36,7 +36,7 @@ var config = {
         testUrl: `${host}/test/find/`,
 
         // 上传图片接口
-        uploadUrl: `${host}/publish/upload`,
+        uploadUrl: `${image_host}/publish/upload`,
         // 发布信息
         publishcontent: `${host}/publish/content`
 
