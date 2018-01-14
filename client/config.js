@@ -36,7 +36,7 @@ var config = {
         testUrl: `${host}/test/find/`,
 
         // 上传图片接口
-        uploadUrl: `${image_host}/publish/upload`,
+        uploadUrl: `${host}/publish/upload`,
         // 发布信息
         publishcontent: `${host}/publish/content`
 
