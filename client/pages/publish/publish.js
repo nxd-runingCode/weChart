@@ -203,9 +203,10 @@ Page({
        // console.log("requestResult",requestResult);
        console.log('执行到这里');
        that.formReset();
+       console.log('requestResult============>',requestResult)
        if (requestError) {
          console.log(requestError);
-         return;
+         return ;
        }
        //   console.log(res.data)
        //   that.modalTap();

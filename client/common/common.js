@@ -60,12 +60,16 @@ var showToLodinModel = (title, content) => {
         wx.openSetting({
           success(res) {
             console.log(res.authSetting['scope.userInfo'])
-            if (res.authSetting['scope.userInfo']) {
+            if (!res.authSetting['scope.userInfo']) {
               doLogin('request');
             }
           }
         })
       } else if (res.cancel) {
+        console.log('用户点击取消');
+        wx.redirectTo({
+          url: '../item/item',
+        })
         console.log('用户点击取消')
       }
     }
@@ -167,8 +171,17 @@ var doRequest = function (method, data, url, callback) {
   });
 };
 
+//判断是否登陆
+var isLogin = function () {
+  if (constants.USER_ID == '') {
+    showToLodinModel('请先登录', '您还没有登录');
+  }
+}
+
+
 
 var exports = module.exports = {
   login: doLogin,
   request: doRequest,
+  isLogin: isLogin
 };
