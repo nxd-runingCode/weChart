@@ -9,7 +9,11 @@
             <text class="date">{{item.createDate}}</text>
         </view>
         <view class="content" style="word-break: break-all"><text>{{item.content}}</text></view>
-         <image class='userinfo-avatar' src='{{item.imageUrl}}' mode='aspectFit'></image> 
+         <view class='parentPicUrl1'>
+        <view class='parentPicUrl' wx:for="{{item.picUrls}}" wx:for-item="picUrl">
+         <image class='userinfo-pic'  src='{{picUrl}}'  ></image> 
+         </view>
+         </view>
        <!-- <view style="word-break: break-all">{{item.imageUrl}}</view> -->
         <view style='height:20px'></view>
       </view>

@@ -67,9 +67,12 @@ var showToLodinModel = (title, content) => {
         })
       } else if (res.cancel) {
         console.log('用户点击取消');
-        wx.redirectTo({
-          url: '../item/item',
-        })
+        // wx.redirectTo({
+        //   url: '../item/item',
+        // })
+        wx.switchTab({
+          url: '../index/index'
+        }) 
         console.log('用户点击取消')
       }
     }

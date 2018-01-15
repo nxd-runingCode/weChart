@@ -83,13 +83,23 @@ Page({
     var newPage = this.data.pageindex + 1;
     console.log("当前页" + newPage)
     console.log(that.data.totalPage)
-    if (that.data.totalPage >= newPage) {
+    if (that.data.totalPage > newPage) {
+      console.log("searchLoading: true")
       this.setData({
         pageindex: newPage,
         lastLoadTime: e.timeStamp,
         searchLoading: true
-      });
+      }) ;
       this.loadList();
+    } else {
+      console.log("searchLoadingComplete: true")
+      this.setData({
+        pageindex: newPage,
+        lastLoadTime: e.timeStamp,
+        searchLoadingComplete: true,
+        searchLoading: false
+      });
+      
     }  
   },
 
