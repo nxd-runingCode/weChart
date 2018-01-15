@@ -34,6 +34,7 @@ Page({
 
   //下拉刷新
   upper: function (e) {
+    this.setData({list:[],pageindex:1});
     this.loadList(); // 注意要加 this。
   },
 
