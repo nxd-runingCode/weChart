@@ -3,7 +3,7 @@ page{
   display: flex;  
   flex-direction: column;  
   height: 100%;  
-  padding: 20rpx 0 20rpx 50rpx;  
+  padding: 0px;  
 }  
 
 .search{  
@@ -61,6 +61,16 @@ page{
   float: left;
   margin-top: 10px; 
 }
+
+.userinfo-pic {
+  width: 100px;
+  height: 100px;
+  
+  
+  margin-top: 10px; 
+ 
+  
+}
 .userinfo-nickName {
   float: left;
    margin-top: 10px; 
@@ -74,4 +84,24 @@ page{
 }
 .content {
   margin: 10rpx 0 10rpx 20rpx;
+ 
+}
+
+.parentPicUrl {
+  /* padding-left: 0px;
+  display: flex;  
+  flex-direction: row; 
+  justify-content:flex-start; */
+  flex:1;
+  width: 100px;
+  flex-grow:0;
+  margin-left: 10px;
+}
+
+.parentPicUrl1 {
+   padding-left: 0px;
+  display: flex;  
+  flex-direction: row; 
+  
+ flex-wrap:wrap;
 }
