@@ -1,15 +1,33 @@
 <!--pages/publish/publish.wxml-->
-<text>pages/publish/publish.wxml</text>
+<view class="root2">
+    <view class="line2" wx:if="{{userId == ''}}" >
+        <view class="line2-control">
+            <view bindtap="doLogin" class="item">
+                <view class="item-inner">登录</view>
+            </view>
+        </view>
+    </view>
+    <view wx:else class="line2-control">
+      <image class='userinfo-avatar' src='{{avatarUrl}}' mode='aspectFit'></image>
+      <text class='userinfo-nickName'>{{nickName}}</text>
+    </view> 
+    <text wx:if="{{userId == ''}}">{{userId}}</text>
+     
+</view>
 
 
  <view class="line">
-        <text>喜欢的动物的快过来留言了！</text>
+        <text></text>
         <form bindsubmit="formSubmit" bindreset="formReset">
-        <input name="content" id='input_content' value='{{input_content}}' class="publish_input" placeholder="随便说一说！"   auto-focus/>
+        <!-- <input name="content" id='input_content' value='{{input_content}}' class="publish_input" placeholder="随便说一说！"   auto-focus/> -->
+
+          <textarea id='input_content' name="content"  value='{{input_content}}' class="publish_input" placeholder="随便说一说..." auto-focus/>
 
         <view class="line-control">
             <view bindtap="doUpload" class="item">
-                <view class="item-inner">上传图片</view>
+                <view class="item-inner">
+                <text class='image_title'>点击选择图片</text>
+                </view>
             </view>
             <view class="item-image"  wx:for="{{imgUrl}}" wx:for-item="itemimage">
                 <image src="{{ itemimage }}" class="image" mode="aspectFill"                             bindtap="previewImage" ></image>
@@ -19,4 +37,4 @@
          <button  form-type="submit">发布</button>
       
         </form>
-    </view>
+</view>

@@ -4,7 +4,7 @@
 
 // 此处主机域名修改成腾讯云解决方案分配的域名
 
-var host = 'http://192.168.0.100:8080';
+var host = 'http://192.168.0.102:8080';
 var image_host = 'http://192.168.0.100:8888';
 
 // var host = 'https://www.nyhwc.com';

@@ -24,6 +24,13 @@
     height: 90rpx;
     line-height: 90rpx;
 }
+.line-control .item .item-inner{
+    text-align: center;
+    background: #C8E2B1;
+    color: #64004B;
+}
+
+
 .line-control .item-image {
     text-align: center;
 }
@@ -33,7 +40,6 @@
     text-align: left;
     color: #007AFF;
     font-size: 32rpx;
-    padding-left: 40rpx;
     position: relative;
 }
 
@@ -81,9 +87,52 @@
 .line-control .item.disabled:active {
     background: none;
 }
-.publish_input {
-    height: 40px;
+#input_content {
+    height: 120px;
+    width: 100%;
+    margin-top: 100rpx;
+    background: #FFFBD1;
 }
 
 
+.userinfo-avatar {
+  width: 100rpx;
+  height: 100rpx;
+  margin: 0 20rpx;
+  border-radius: 50%;
+}
+.userinfo-nickName {
+  float: right;
+  margin-top: 22px;
+  /* margin-left: 10px; */
+}
+ .root2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom:0;
+} 
+.line2 {
+    padding-top: 30rpx;
+}
+.line2 text {
+    color: #6D6D72;
+    font-size: 28rpx;
+    margin-left: 40rpx;
+}
+.line2-control {
+    border-bottom: #d9d9d9 1px solid;
+    border-top: #d9d9d9 1px solid;
+    background-color: #fff;
+    margin-top: 10rpx;
+}
+.line2-control .item {
+    box-sizing: border-box;
+    text-align: left;
+    color: #007AFF;
+    font-size: 32rpx;
+    padding-left: 40rpx;
+    position: relative;
+}
 
