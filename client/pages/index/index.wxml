@@ -11,7 +11,7 @@
         <view class="content" style="word-break: break-all"><text>{{item.content}}</text></view>
          <view class='parentPicUrl1'>
         <view class='parentPicUrl' wx:for="{{item.picUrls}}" wx:for-item="picUrl">
-         <image class='userinfo-pic'  src='{{picUrl}}'  ></image> 
+         <image class='userinfo-pic'  src='{{picUrl}}' bindtap="imgYu" data-list="{{item.picUrls}}" data-src="{{picUrl}}" ></image> 
          </view>
          </view>
        <!-- <view style="word-break: break-all">{{item.imageUrl}}</view> -->
