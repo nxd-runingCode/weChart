@@ -129,7 +129,7 @@ Page({
         
       },
       fail: function (e) {
-        console.error(e)
+        console.log('用户取消选择发布图片')
       }
     })
   },

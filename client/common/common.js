@@ -57,23 +57,23 @@ var showToLodinModel = (title, content) => {
     success: function (res) {
       if (res.confirm) {
         console.log('用户点击确定')
-        wx.openSetting({
-          success(res) {
-            console.log(res.authSetting['scope.userInfo'])
-            if (!res.authSetting['scope.userInfo']) {
-              doLogin('request');
+        if (constants.USER_ID == ''){
+          wx.openSetting({
+            success(res) {
+              console.log(res.authSetting['scope.userInfo'])
+              if (res.authSetting['scope.userInfo']) {
+                doLogin('request');
+              }
             }
-          }
-        })
+          })
+        }
       } else if (res.cancel) {
         console.log('用户点击取消');
-        // wx.redirectTo({
-        //   url: '../item/item',
-        // })
+        
         wx.switchTab({
           url: '../index/index'
         }) 
-        console.log('用户点击取消')
+        
       }
     }
   });
